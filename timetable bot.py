@@ -34,19 +34,24 @@ async def task():
         if day == "Mon":
             if cTime in monday:
                 await channel.send(message.replace("{}", monday[cTime]))
+                await asyncio.sleep(60)
         elif day == "Tue":
             if cTime in monday:
                 await channel.send(message.replace("{}", monday[cTime]))
+                await asyncio.sleep(60)
         elif day == "Wed":
             if cTime in wednesday:
                 await channel.send(message.replace("{}", wednesday[cTime]))
+                await asyncio.sleep(60)
         elif day == "Thu":
             if cTime in wednesday:
                 await channel.send(message.replace("{}", wednesday[cTime]))
+                await asyncio.sleep(60)
         elif day == "Fri":
             if cTime in friday:
                 await channel.send(message.replace("{}", friday[cTime]))
-        await asyncio.sleep(60)
+                await asyncio.sleep(60)
+        await asyncio.sleep(1)
 
             
     
