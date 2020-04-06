@@ -20,17 +20,22 @@ friday = {(9, 28):"Period 1 is about to start", (10, 25):"Period 1 has finished,
           (14, 15):"Period 4 is over, period 5 will begin shortly", (15, 15):"End of the school day"}
 
 channelId = 1 #Enter channel id
-
+roleName = "" #Enter role name exactly
+token = ""    #Enter bot token
 
 async def task():
     await client.wait_until_ready()
     channel = client.get_channel(channelId)
+    server = channel.guild
+    role = None
+    for i in server.roles:
+        if i.name == "test":
+            role = i
     while client.is_closed:
         
         cTime = tuple([int(i) for i in time.ctime().split()[3].split(":")[:2]])
         day = time.ctime().split()[0]
-        print(1)
-        message = "``` ``` {}."
+        message = "``` ``` {}. "+role.mention
         if day == "Mon":
             if cTime in monday:
                 await channel.send(message.replace("{}", monday[cTime]))
@@ -54,6 +59,6 @@ async def task():
         await asyncio.sleep(1)
 
             
-    
+  
 client.loop.create_task(task())
-client.run("token")
+client.run(token)
