@@ -29,7 +29,7 @@ async def task():
     server = channel.guild
     role = None
     for i in server.roles:
-        if i.name == "test":
+        if i.name == roleName:
             role = i
     while client.is_closed:
         
